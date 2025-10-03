@@ -1,35 +1,39 @@
 /* ========================================= */
-/* carrito.css - Estilo Gamer/Ciberpunk */
+/* carrito.css - Estilo Xbox */
 /* ========================================= */
 
-/* --- Variables de Color (Coherencia con el tema Gamer/Neón) --- */
+/* --- Variables de Color (Coherencia con el tema Xbox) --- */
 :root {
-    --deep-blue: #0f1a30; /* Fondo principal oscuro */
-    --medium-blue: #1a2b4a; /* Fondo secundario/tarjetas */
-    --electric-blue: #00a8ff; /* Azul neón */
-    --purple: #8c52ff; /* Morado neón */
-    --pink: #ff2a6d; /* Rosa/Fucsia neón (Acción Peligrosa) */
-    --cyan: #00f5ff; /* Cian neón (Éxito/Principal) */
-    --white: #ffffff;
+    --xbox-green: #107C10;
+    --xbox-green-bright: #0bc90b;
+    --xbox-green-neon: #00ff47;
+    --xbox-dark: #000000;
+    --xbox-dark-gray: #1a1a1a;
+    --xbox-medium-gray: #2d2d2d;
+    --xbox-light-gray: #404040;
+    --xbox-white: #ffffff;
+    --xbox-light: #e6e6e6;
     --text-primary: #ffffff;
-    --text-secondary: #b8c1ec; /* Texto secundario gris azulado */
+    --text-secondary: #cccccc;
+    --accent-green: #00ff47;
+    --accent-light: #66ff66;
 }
 
 /* --- Contenedor Principal del Carrito --- */
 .carrito-container {
-    max-width: 700px; /* Ancho optimizado para un carrito */
+    max-width: 700px;
     margin: 40px auto;
     padding: 30px;
     
-    /* Fondo con transparencia y blur para un efecto de cristal esmerilado (Aero-glass) */
-    background: linear-gradient(135deg, rgba(26, 43, 74, 0.95) 0%, rgba(42, 63, 111, 0.95) 100%);
+    /* Fondo con transparencia y blur estilo Xbox */
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
     backdrop-filter: blur(15px);
     
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(16, 124, 16, 0.4);
     box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.6), /* Sombra profunda */
-        0 0 25px rgba(0, 245, 255, 0.1); /* Ligero brillo cian */
+        0 10px 30px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(16, 124, 16, 0.2);
     
     position: relative;
     overflow: hidden;
@@ -44,7 +48,7 @@
     right: -50px;
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--xbox-green-neon) 0%, transparent 70%);
     pointer-events: none;
     opacity: 0.2;
     z-index: 0;
@@ -57,15 +61,15 @@
     margin-bottom: 30px;
     font-weight: 700;
     
-    /* Efecto de texto neón/gradiente */
-    background: linear-gradient(45deg, var(--cyan), var(--electric-blue));
+    /* Efecto de texto neón/gradiente Xbox */
+    background: linear-gradient(45deg, var(--xbox-green-neon), var(--xbox-green-bright));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+    text-shadow: 0 0 15px rgba(0, 255, 71, 0.4);
     
     padding-bottom: 10px;
-    border-bottom: 2px solid rgba(0, 245, 255, 0.3);
+    border-bottom: 2px solid rgba(16, 124, 16, 0.4);
 }
 
 /* --- Mensaje de Carrito Vacío y Total de Peso --- */
@@ -76,19 +80,20 @@
     padding: 20px;
     margin: 20px 0;
     
-    /* Estilo de terminal/log */
-    background: rgba(15, 26, 48, 0.7);
+    /* Estilo de terminal/log Xbox */
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
-    border: 1px dashed var(--purple);
+    border: 1px dashed var(--xbox-green);
 }
 
 /* El total de peso merece un estilo más destacado */
 .carrito-container > .carrito-empty:last-of-type {
     font-size: 1.6rem;
-    color: var(--cyan);
+    color: var(--xbox-green-neon);
     font-weight: 700;
-    border: 1px solid var(--electric-blue);
-    box-shadow: 0 0 10px rgba(0, 168, 255, 0.3);
+    border: 1px solid var(--xbox-green-bright);
+    box-shadow: 0 0 10px rgba(16, 124, 16, 0.4);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* --- Lista de Items --- */
@@ -96,23 +101,23 @@
     list-style: none;
     padding: 0;
     margin: 0 0 30px 0;
-    max-height: 400px; /* Limita la altura para scroll */
+    max-height: 400px;
     overflow-y: auto;
 }
 
-/* Scrollbar estilo Gamer */
+/* Scrollbar estilo Xbox */
 .carrito-list::-webkit-scrollbar {
     width: 8px;
 }
 .carrito-list::-webkit-scrollbar-track {
-    background: var(--deep-blue);
+    background: var(--xbox-dark);
 }
 .carrito-list::-webkit-scrollbar-thumb {
-    background: var(--electric-blue);
+    background: var(--xbox-green);
     border-radius: 10px;
 }
 .carrito-list::-webkit-scrollbar-thumb:hover {
-    background: var(--cyan);
+    background: var(--xbox-green-bright);
 }
 
 /* --- Item Individual del Carrito --- */
@@ -123,15 +128,15 @@
     padding: 15px;
     margin-bottom: 10px;
     
-    background: rgba(26, 43, 74, 0.8);
+    background: rgba(26, 26, 26, 0.8);
     border-radius: 10px;
-    border-left: 5px solid var(--electric-blue);
+    border-left: 5px solid var(--xbox-green);
     transition: all 0.3s ease;
 }
 
 .carrito-list-item:hover {
-    background: rgba(42, 63, 111, 0.9);
-    box-shadow: 0 0 10px rgba(0, 168, 255, 0.4);
+    background: rgba(45, 45, 45, 0.9);
+    box-shadow: 0 0 10px rgba(16, 124, 16, 0.4);
     transform: translateX(5px);
 }
 
@@ -139,8 +144,8 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    flex: 1; /* Ocupa el espacio restante */
-    min-width: 0; /* Permite que el contenido se reduzca en móvil */
+    flex: 1;
+    min-width: 0;
 }
 
 .carrito-item-image {
@@ -148,15 +153,14 @@
     height: 50px;
     object-fit: cover;
     border-radius: 8px;
-    border: 2px solid var(--cyan);
-    flex-shrink: 0; /* Evita que la imagen se reduzca */
+    border: 2px solid var(--xbox-green-neon);
+    flex-shrink: 0;
 }
 
 .carrito-item-details div {
     color: var(--text-primary);
     font-size: 1.05rem;
     font-weight: 500;
-    /* Asegura que el texto largo se maneje bien */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; 
@@ -176,40 +180,44 @@
     white-space: nowrap;
 }
 
-/* Botones Principales (Vaciar/Pedido) */
+/* Botón Vaciar Carrito (Acción principal) */
 .carrito-clear-button {
-    width: 100%; /* Por defecto en bloque */
+    width: 100%;
     margin-top: 15px;
     
-    background: linear-gradient(135deg, var(--purple), var(--electric-blue));
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(140, 82, 255, 0.4);
+    background: linear-gradient(135deg, var(--xbox-green), var(--xbox-green-bright));
+    color: var(--xbox-white);
+    box-shadow: 0 4px 15px rgba(16, 124, 16, 0.4);
+    border: 1px solid rgba(16, 124, 16, 0.3);
 }
 
 .carrito-clear-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(140, 82, 255, 0.6);
+    box-shadow: 0 6px 20px rgba(16, 124, 16, 0.6);
+    background: linear-gradient(135deg, var(--xbox-green-bright), var(--xbox-green));
 }
 
-/* Botón de Eliminar (Acción secundaria/peligro) */
+/* Botón de Eliminar (Acción secundaria) */
 .carrito-remove-button {
-    background-color: var(--pink);
-    color: var(--white);
-    box-shadow: 0 4px 10px rgba(255, 42, 109, 0.4);
-    flex-shrink: 0; /* Evita que el botón se comprima */
+    background: linear-gradient(135deg, #ff3333, #ff6666);
+    color: var(--xbox-white);
+    box-shadow: 0 4px 10px rgba(255, 51, 51, 0.4);
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 51, 51, 0.3);
 }
 
 .carrito-remove-button:hover {
-    background-color: #f00050; /* Tono más oscuro al pasar el ratón */
+    background: linear-gradient(135deg, #cc0000, #ff3333);
     transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 51, 51, 0.6);
 }
 
-/* --- RESPONSIVIDAD (Asegurando el flujo móvil) --- */
+/* --- RESPONSIVIDAD --- */
 
 /* Ajustes para tabletas y móviles (Máx. 768px) */
 @media (max-width: 768px) {
     .carrito-container {
-        margin: 15px; /* Más estrecho en los lados */
+        margin: 15px;
         padding: 20px;
     }
     
@@ -225,25 +233,23 @@
     /* Los items se apilan verticalmente para mejor legibilidad */
     .carrito-list-item {
         flex-direction: column;
-        align-items: flex-start; /* Alinea todo a la izquierda */
+        align-items: flex-start;
         gap: 10px;
         padding: 15px;
     }
 
     .carrito-item-details {
-        width: 100%; /* Ocupa todo el ancho */
-        flex-direction: row; /* Mantén la imagen y el texto en la misma fila */
+        width: 100%;
+        flex-direction: row;
         align-items: center;
         gap: 10px;
     }
     
-    /* El nombre del juego puede ocupar el 100% del ancho restante */
     .carrito-item-details div {
-        /* Permite que el texto se envuelva en varias líneas si es necesario */
         white-space: normal;
         overflow: visible;
         text-overflow: clip; 
-        flex: 1; /* Ocupa el resto del espacio */
+        flex: 1;
     }
 
     .carrito-item-image {
@@ -251,15 +257,13 @@
         height: 40px;
     }
 
-    /* Los botones de acción ahora ocupan todo el ancho del item */
     .carrito-remove-button {
         width: 100%;
-        margin-top: 10px; /* Separación de los detalles del juego */
-        order: 3; /* Asegura que el botón Eliminar vaya al final en la columna */
+        margin-top: 10px;
+        order: 3;
         padding: 10px;
     }
     
-    /* Asegura que los botones principales sigan siendo de ancho completo */
     .carrito-clear-button {
         padding: 15px 10px;
         font-size: 1.0rem;
@@ -268,4 +272,41 @@
     .carrito-container > .carrito-empty:last-of-type {
         font-size: 1.4rem;
     }
+}
+
+/* Efectos de brillo adicionales para coherencia con FilterSearch */
+.carrito-list-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 124, 16, 0.1), transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.carrito-list-item:hover::before {
+    left: 100%;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.carrito-list-item {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.carrito-heading {
+    animation: fadeInUp 0.3s ease-out;
 }

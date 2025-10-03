@@ -1,8 +1,8 @@
 .footer {
-    background-color: var(--deep-blue);
+    background-color: var(--xbox-dark-gray);
     /* Borde superior y sombra para simular el estilo del header */
-    border-top: 2px solid var(--cyan);
-    box-shadow: 0 -4px 15px rgba(0, 245, 255, 0.2);
+    border-top: 2px solid var(--xbox-green);
+    box-shadow: 0 -4px 15px rgba(16, 124, 16, 0.3);
     padding-top: 40px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -14,25 +14,25 @@
     padding: 0 20px 30px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Esencial para la responsividad */
+    flex-wrap: wrap;
     gap: 30px;
 }
 
 /* --- Secciones del Footer --- */
 .footer-section {
     flex: 1;
-    min-width: 150px; /* Asegura un ancho mínimo antes de envolver */
+    min-width: 150px;
 }
 
 .footer-section h4 {
-    /* Títulos con estilo neón */
-    color: var(--cyan);
+    /* Títulos con estilo Xbox */
+    color: var(--xbox-green-neon);
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    text-shadow: 0 0 10px rgba(0, 255, 71, 0.5);
     padding-bottom: 5px;
-    border-bottom: 1px dashed rgba(0, 245, 255, 0.3);
+    border-bottom: 1px dashed rgba(16, 124, 16, 0.4);
 }
 
 .footer-section ul {
@@ -50,13 +50,29 @@
     color: var(--text-secondary);
     font-size: 1rem;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-section a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--xbox-green-neon);
+    transition: width 0.3s ease;
 }
 
 .footer-section a:hover {
-    color: var(--white);
-    text-shadow: 0 0 5px var(--purple); /* Efecto hover con otro color neón */
+    color: var(--xbox-white);
+    text-shadow: 0 0 5px var(--xbox-green-neon);
     transform: translateX(5px);
-    display: inline-block; /* Permite la translación */
+    display: inline-block;
+}
+
+.footer-section a:hover::before {
+    width: 100%;
 }
 
 /* --- Iconos Sociales --- */
@@ -68,26 +84,36 @@
 
 .social-icons a {
     display: block;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     border-radius: 50%;
     overflow: hidden;
+    background: rgba(16, 124, 16, 0.1);
+    padding: 8px;
+    border: 1px solid rgba(16, 124, 16, 0.3);
 }
 
 .social-icons a:hover {
     transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 0 15px var(--pink); /* Efecto hover en los íconos */
+    box-shadow: 0 0 15px rgba(16, 124, 16, 0.6);
+    background: rgba(16, 124, 16, 0.2);
+    border-color: rgba(16, 124, 16, 0.6);
 }
 
 .social-icons img {
-    width: 35px; /* Ajuste el tamaño de los iconos */
+    width: 35px;
     height: 35px;
     object-fit: contain;
+    filter: brightness(0.9);
+}
+
+.social-icons a:hover img {
+    filter: brightness(1.2);
 }
 
 /* --- Sección de Copyright --- */
 .footer-bottom {
-    border-top: 1px solid var(--medium-blue);
-    background-color: var(--medium-blue);
+    border-top: 1px solid var(--xbox-medium-gray);
+    background-color: var(--xbox-dark);
     text-align: center;
     padding: 15px 20px;
 }
@@ -98,18 +124,33 @@
     font-size: 0.9rem;
 }
 
+/* Efecto de partículas en el footer similar al header */
+.footer::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 80% 80%, rgba(16, 124, 16, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 20% 20%, rgba(11, 201, 11, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* --- RESPONSIVIDAD --- */
 
 /* Tabletas (Max. 768px) */
 @media (max-width: 768px) {
     .footer-content {
-        justify-content: space-around; /* Distribuye las secciones uniformemente */
+        justify-content: space-around;
         gap: 20px;
         padding: 0 15px 30px;
     }
     
     .footer-section {
-        flex-basis: 40%; /* Dos secciones por fila */
+        flex-basis: 40%;
         min-width: 40%; 
     }
 }
@@ -117,8 +158,8 @@
 /* Móviles (Max. 480px) */
 @media (max-width: 480px) {
     .footer-content {
-        flex-direction: column; /* Una sección por fila */
-        align-items: center; /* Centra las secciones */
+        flex-direction: column;
+        align-items: center;
         text-align: center;
     }
     
@@ -126,7 +167,7 @@
         flex-basis: 100%;
         min-width: 100%;
         padding-bottom: 20px;
-        border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+        border-bottom: 1px dotted rgba(16, 124, 16, 0.2);
     }
     
     .footer-section:last-child {
@@ -140,4 +181,19 @@
     .social-icons {
         justify-content: center;
     }
+}
+
+/* Variables de colores Xbox para coherencia */
+:root {
+    --xbox-green: #107C10;
+    --xbox-green-bright: #0bc90b;
+    --xbox-green-neon: #00ff47;
+    --xbox-dark: #000000;
+    --xbox-dark-gray: #1a1a1a;
+    --xbox-medium-gray: #2d2d2d;
+    --xbox-light-gray: #404040;
+    --xbox-white: #ffffff;
+    --xbox-light: #e6e6e6;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
 }
