@@ -1,0 +1,603 @@
+/* Variables de colores estilo XBOX - Verde, Blanco, Negro */
+:root {
+  --xbox-green: #107C10;
+  --xbox-green-bright: #0bc90b;
+  --xbox-green-neon: #00ff47;
+  --xbox-dark: #000000;
+  --xbox-dark-gray: #1a1a1a;
+  --xbox-medium-gray: #2d2d2d;
+  --xbox-light-gray: #404040;
+  --xbox-white: #ffffff;
+  --xbox-light: #e6e6e6;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --accent-green: #00ff47;
+  --accent-light: #66ff66;
+}
+
+/* Fondo de pantalla estilo XBOX */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--xbox-dark) 0%, var(--xbox-dark-gray) 50%, #000000 100%);
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  color: var(--text-primary);
+}
+
+/* Efectos de partículas verdes estilo XBOX */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(16, 124, 16, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(11, 201, 11, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(0, 255, 71, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Contenedor principal */
+.games-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Container de tarjetas */
+.container-tarjetas {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Filtros con estilo XBOX */
+.filters-container {
+  background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+  grid-column: 1 / -1;
+  border: 1px solid rgba(16, 124, 16, 0.4);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(16, 124, 16, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.filters-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(16, 124, 16, 0.2), transparent);
+  animation: shine 6s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* Caja de búsqueda estilo XBOX */
+.search-box {
+  position: relative;
+  flex: 1;
+  min-width: 350px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 18px 25px;
+  border: 2px solid rgba(16, 124, 16, 0.5);
+  border-radius: 15px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 10px rgba(16, 124, 16, 0.2);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--xbox-green-bright);
+  box-shadow: 
+    0 0 0 3px rgba(16, 124, 16, 0.3),
+    0 0 25px rgba(16, 124, 16, 0.4),
+    0 4px 20px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Controles de filtro */
+.filter-controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 16px 25px;
+  border: 2px solid rgba(16, 124, 16, 0.5);
+  border-radius: 15px;
+  font-size: 1.1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 10px rgba(16, 124, 16, 0.2);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--xbox-green-bright);
+  box-shadow: 
+    0 0 0 3px rgba(16, 124, 16, 0.3),
+    0 0 20px rgba(16, 124, 16, 0.4);
+}
+
+.filter-select option {
+  background: var(--xbox-dark);
+  color: var(--text-primary);
+  padding: 12px;
+  font-size: 1rem;
+}
+
+/* Botón reset estilo XBOX */
+.reset-btn {
+  padding: 16px 30px;
+  background: linear-gradient(135deg, var(--xbox-green), var(--xbox-green-bright));
+  color: var(--xbox-white);
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    0 4px 15px rgba(16, 124, 16, 0.5),
+    0 0 20px rgba(16, 124, 16, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.reset-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.reset-btn:hover::before {
+  left: 100%;
+}
+
+.reset-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 25px rgba(16, 124, 16, 0.7),
+    0 0 30px rgba(16, 124, 16, 0.4);
+}
+
+/* Indicador de filtro */
+.filter-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+  backdrop-filter: blur(15px);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+  grid-column: 1 / -1;
+  border: 1px solid rgba(16, 124, 16, 0.4);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(16, 124, 16, 0.1);
+}
+
+.active-filter {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.active-filter strong {
+  color: var(--xbox-green-neon);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 71, 0.6);
+}
+
+.games-count {
+  background: linear-gradient(135deg, var(--xbox-green), var(--xbox-green-bright));
+  color: var(--xbox-white);
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 
+    0 4px 15px rgba(16, 124, 16, 0.5),
+    0 0 15px rgba(16, 124, 16, 0.3);
+}
+
+/* Tarjetas de juegos estilo XBOX */
+.tarjetas {
+  background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+  border: 1px solid rgba(16, 124, 16, 0.4);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(16, 124, 16, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjetas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(16, 124, 16, 0.15), transparent);
+  transition: left 0.6s ease;
+}
+
+.tarjetas:hover::before {
+  left: 100%;
+}
+
+.tarjetas:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(16, 124, 16, 0.8);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(16, 124, 16, 0.3),
+    0 0 40px rgba(16, 124, 16, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.tarjetas h1 {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  line-height: 1.4;
+  min-height: 3.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* IMAGENES COMPLETAS */
+.tarjetas img {
+  max-width: 220px;
+  width: auto;
+  height: auto;
+  max-height: 220px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    0 0 10px rgba(16, 124, 16, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(16, 124, 16, 0.2);
+}
+
+.tarjetas:hover img {
+  transform: scale(1.08);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(16, 124, 16, 0.2);
+  border-color: rgba(16, 124, 16, 0.4);
+}
+
+.tarjetas h2 {
+  color: var(--xbox-green-neon);
+  font-size: 1.4em;
+  margin: 15px 0;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 255, 71, 0.5);
+}
+
+.game-type {
+  color: var(--accent-light);
+  font-size: 1em;
+  margin: 10px 0;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(102, 255, 102, 0.4);
+}
+
+/* Botón agregar al carrito estilo XBOX */
+.add-to-cart-btn {
+  background: linear-gradient(135deg, var(--xbox-green), var(--xbox-green-bright));
+  color: var(--xbox-white);
+  padding: 15px 25px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-top: auto;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    0 4px 15px rgba(16, 124, 16, 0.5),
+    0 0 20px rgba(16, 124, 16, 0.3);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  border: 1px solid rgba(16, 124, 16, 0.4);
+}
+
+.add-to-cart-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.add-to-cart-btn:hover::before {
+  left: 100%;
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(135deg, var(--xbox-green-bright), var(--xbox-green));
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 25px rgba(16, 124, 16, 0.7),
+    0 0 30px rgba(16, 124, 16, 0.5);
+}
+
+/* Loading con efecto XBOX */
+.loading-container {
+  text-align: center;
+  padding: 100px 20px;
+  grid-column: 1 / -1;
+}
+
+.loading-spinner {
+  width: 70px;
+  height: 70px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid var(--xbox-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 30px;
+  box-shadow: 
+    0 0 25px rgba(16, 124, 16, 0.5),
+    0 0 15px rgba(16, 124, 16, 0.3);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: var(--text-secondary);
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-shadow: 0 0 10px rgba(16, 124, 16, 0.3);
+}
+
+/* Sin resultados */
+.no-results {
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  grid-column: 1 / -1;
+  margin-top: 30px;
+  border: 1px solid rgba(16, 124, 16, 0.3);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(16, 124, 16, 0.1);
+}
+
+.no-results-icon {
+  font-size: 5rem;
+  margin-bottom: 25px;
+  opacity: 0.8;
+  text-shadow: 0 0 20px rgba(16, 124, 16, 0.4);
+}
+
+.no-results h3 {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.no-results p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container-tarjetas {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 15px;
+  }
+  
+  .filters-container {
+    padding: 25px;
+    gap: 20px;
+  }
+  
+  .search-box {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .games-container {
+    padding: 15px;
+  }
+  
+  .container-tarjetas {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  
+  .filters-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .search-box {
+    min-width: auto;
+  }
+  
+  .filter-controls {
+    justify-content: center;
+  }
+  
+  .filter-select {
+    min-width: 100%;
+  }
+  
+  .filter-indicator {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+  
+  .tarjetas {
+    min-height: 380px;
+    padding: 20px;
+  }
+  
+  .tarjetas img {
+    max-width: 180px;
+    max-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-tarjetas {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  
+  .games-container {
+    padding: 10px;
+  }
+  
+  .tarjetas {
+    padding: 15px;
+    min-height: 350px;
+  }
+  
+  .tarjetas img {
+    max-width: 160px;
+    max-height: 160px;
+  }
+  
+  .tarjetas h1 {
+    font-size: 1.2em;
+    min-height: 2.8em;
+  }
+  
+  .add-to-cart-btn {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tarjetas {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.filters-container {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.filter-indicator {
+  animation: fadeInUp 0.5s ease-out;
+}

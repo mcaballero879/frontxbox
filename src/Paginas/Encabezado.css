@@ -1,0 +1,280 @@
+/* Estilos para el componente Encabezado */
+header {
+  background: linear-gradient(135deg, rgba(26, 43, 74, 0.95) 0%, rgba(42, 63, 111, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+/* Logo y marca */
+.logo {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.3));
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(0, 245, 255, 0.5));
+}
+
+/* Robot azul */
+.container img[alt="robot azul"] {
+  border-radius: 50%;
+  padding: 5px;
+  background: rgba(0, 245, 255, 0.1);
+  border: 2px solid rgba(0, 245, 255, 0.3);
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.3));
+}
+
+.container img[alt="robot azul"]:hover {
+  transform: scale(1.1) rotate(5deg);
+  border-color: rgba(0, 245, 255, 0.6);
+  box-shadow: 
+    0 0 20px rgba(0, 245, 255, 0.4),
+    inset 0 0 20px rgba(0, 245, 255, 0.1);
+}
+
+/* Navegación */
+nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  position: relative;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: rgba(15, 26, 48, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+nav a:hover::before {
+  left: 100%;
+}
+
+nav a:hover {
+  background: rgba(0, 168, 255, 0.2);
+  border-color: rgba(0, 245, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+nav h4 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+nav a:hover h4 {
+  color: #00f5ff;
+  text-shadow: 
+    0 0 10px rgba(0, 245, 255, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón de menú móvil */
+.menu-btn {
+  display: none;
+  background: linear-gradient(135deg, #00a8ff, #00f5ff);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 168, 255, 0.4);
+}
+
+.menu-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(0, 245, 255, 0.6),
+    0 0 25px rgba(0, 245, 255, 0.3);
+}
+
+/* Efectos activos */
+nav a.active {
+  background: linear-gradient(135deg, rgba(0, 168, 255, 0.3), rgba(0, 245, 255, 0.2));
+  border-color: rgba(0, 245, 255, 0.6);
+}
+
+nav a.active h4 {
+  color: #00f5ff;
+  text-shadow: 0 0 15px rgba(0, 245, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    height: 70px;
+    padding: 0 15px;
+  }
+
+  .menu-btn {
+    display: block;
+    order: 1;
+  }
+
+  .logo {
+    order: 2;
+    margin: 0 auto;
+  }
+
+  .container img[alt="robot azul"] {
+    display: none; /* Ocultar robot en móviles para ahorrar espacio */
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.98) 0%, rgba(42, 63, 111, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  nav.active {
+    max-height: 300px;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    background: transparent;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+
+  nav a:hover {
+    background: rgba(0, 168, 255, 0.1);
+    transform: none;
+  }
+
+  nav h4 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    height: 60px;
+    padding: 0 10px;
+  }
+
+  .logo img {
+    width: 150px;
+  }
+
+  nav a {
+    padding: 15px;
+  }
+
+  nav h4 {
+    font-size: 1rem;
+  }
+
+  .menu-btn {
+    font-size: 1.3rem;
+    padding: 8px 12px;
+  }
+}
+
+/* Animaciones adicionales */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 245, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 245, 255, 0.3);
+  }
+}
+
+/* Efecto de partículas en el header */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 42, 109, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Indicador de página activa */
+nav a[aria-current="page"] {
+  background: linear-gradient(135deg, rgba(0, 168, 255, 0.3), rgba(140, 82, 255, 0.2));
+  border-color: rgba(140, 82, 255, 0.4);
+}
+
+nav a[aria-current="page"] h4 {
+  color: #8c52ff;
+  text-shadow: 0 0 10px rgba(140, 82, 255, 0.5);
+}
+
+/* Transiciones suaves */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}

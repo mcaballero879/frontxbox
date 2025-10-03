@@ -1,0 +1,271 @@
+/* ========================================= */
+/* carrito.css - Estilo Gamer/Ciberpunk */
+/* ========================================= */
+
+/* --- Variables de Color (Coherencia con el tema Gamer/Neón) --- */
+:root {
+    --deep-blue: #0f1a30; /* Fondo principal oscuro */
+    --medium-blue: #1a2b4a; /* Fondo secundario/tarjetas */
+    --electric-blue: #00a8ff; /* Azul neón */
+    --purple: #8c52ff; /* Morado neón */
+    --pink: #ff2a6d; /* Rosa/Fucsia neón (Acción Peligrosa) */
+    --cyan: #00f5ff; /* Cian neón (Éxito/Principal) */
+    --white: #ffffff;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c1ec; /* Texto secundario gris azulado */
+}
+
+/* --- Contenedor Principal del Carrito --- */
+.carrito-container {
+    max-width: 700px; /* Ancho optimizado para un carrito */
+    margin: 40px auto;
+    padding: 30px;
+    
+    /* Fondo con transparencia y blur para un efecto de cristal esmerilado (Aero-glass) */
+    background: linear-gradient(135deg, rgba(26, 43, 74, 0.95) 0%, rgba(42, 63, 111, 0.95) 100%);
+    backdrop-filter: blur(15px);
+    
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.6), /* Sombra profunda */
+        0 0 25px rgba(0, 245, 255, 0.1); /* Ligero brillo cian */
+    
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Efecto de brillo sutil en el borde */
+.carrito-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* --- Título --- */
+.carrito-heading {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    
+    /* Efecto de texto neón/gradiente */
+    background: linear-gradient(45deg, var(--cyan), var(--electric-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+    
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0, 245, 255, 0.3);
+}
+
+/* --- Mensaje de Carrito Vacío y Total de Peso --- */
+.carrito-empty {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    padding: 20px;
+    margin: 20px 0;
+    
+    /* Estilo de terminal/log */
+    background: rgba(15, 26, 48, 0.7);
+    border-radius: 10px;
+    border: 1px dashed var(--purple);
+}
+
+/* El total de peso merece un estilo más destacado */
+.carrito-container > .carrito-empty:last-of-type {
+    font-size: 1.6rem;
+    color: var(--cyan);
+    font-weight: 700;
+    border: 1px solid var(--electric-blue);
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.3);
+}
+
+/* --- Lista de Items --- */
+.carrito-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    max-height: 400px; /* Limita la altura para scroll */
+    overflow-y: auto;
+}
+
+/* Scrollbar estilo Gamer */
+.carrito-list::-webkit-scrollbar {
+    width: 8px;
+}
+.carrito-list::-webkit-scrollbar-track {
+    background: var(--deep-blue);
+}
+.carrito-list::-webkit-scrollbar-thumb {
+    background: var(--electric-blue);
+    border-radius: 10px;
+}
+.carrito-list::-webkit-scrollbar-thumb:hover {
+    background: var(--cyan);
+}
+
+/* --- Item Individual del Carrito --- */
+.carrito-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    
+    background: rgba(26, 43, 74, 0.8);
+    border-radius: 10px;
+    border-left: 5px solid var(--electric-blue);
+    transition: all 0.3s ease;
+}
+
+.carrito-list-item:hover {
+    background: rgba(42, 63, 111, 0.9);
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.4);
+    transform: translateX(5px);
+}
+
+.carrito-item-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1; /* Ocupa el espacio restante */
+    min-width: 0; /* Permite que el contenido se reduzca en móvil */
+}
+
+.carrito-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--cyan);
+    flex-shrink: 0; /* Evita que la imagen se reduzca */
+}
+
+.carrito-item-details div {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 500;
+    /* Asegura que el texto largo se maneje bien */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+/* --- Botones --- */
+.carrito-clear-button,
+.carrito-remove-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Botones Principales (Vaciar/Pedido) */
+.carrito-clear-button {
+    width: 100%; /* Por defecto en bloque */
+    margin-top: 15px;
+    
+    background: linear-gradient(135deg, var(--purple), var(--electric-blue));
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(140, 82, 255, 0.4);
+}
+
+.carrito-clear-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(140, 82, 255, 0.6);
+}
+
+/* Botón de Eliminar (Acción secundaria/peligro) */
+.carrito-remove-button {
+    background-color: var(--pink);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(255, 42, 109, 0.4);
+    flex-shrink: 0; /* Evita que el botón se comprima */
+}
+
+.carrito-remove-button:hover {
+    background-color: #f00050; /* Tono más oscuro al pasar el ratón */
+    transform: scale(1.05);
+}
+
+/* --- RESPONSIVIDAD (Asegurando el flujo móvil) --- */
+
+/* Ajustes para tabletas y móviles (Máx. 768px) */
+@media (max-width: 768px) {
+    .carrito-container {
+        margin: 15px; /* Más estrecho en los lados */
+        padding: 20px;
+    }
+    
+    .carrito-heading {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+}
+
+/* Ajustes Específicos para Móviles (Máx. 550px) */
+@media (max-width: 550px) {
+    
+    /* Los items se apilan verticalmente para mejor legibilidad */
+    .carrito-list-item {
+        flex-direction: column;
+        align-items: flex-start; /* Alinea todo a la izquierda */
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .carrito-item-details {
+        width: 100%; /* Ocupa todo el ancho */
+        flex-direction: row; /* Mantén la imagen y el texto en la misma fila */
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* El nombre del juego puede ocupar el 100% del ancho restante */
+    .carrito-item-details div {
+        /* Permite que el texto se envuelva en varias líneas si es necesario */
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip; 
+        flex: 1; /* Ocupa el resto del espacio */
+    }
+
+    .carrito-item-image {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Los botones de acción ahora ocupan todo el ancho del item */
+    .carrito-remove-button {
+        width: 100%;
+        margin-top: 10px; /* Separación de los detalles del juego */
+        order: 3; /* Asegura que el botón Eliminar vaya al final en la columna */
+        padding: 10px;
+    }
+    
+    /* Asegura que los botones principales sigan siendo de ancho completo */
+    .carrito-clear-button {
+        padding: 15px 10px;
+        font-size: 1.0rem;
+    }
+
+    .carrito-container > .carrito-empty:last-of-type {
+        font-size: 1.4rem;
+    }
+}

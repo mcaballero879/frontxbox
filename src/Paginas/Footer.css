@@ -1,0 +1,143 @@
+.footer {
+    background-color: var(--deep-blue);
+    /* Borde superior y sombra para simular el estilo del header */
+    border-top: 2px solid var(--cyan);
+    box-shadow: 0 -4px 15px rgba(0, 245, 255, 0.2);
+    padding-top: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Contenedor principal para las secciones */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Esencial para la responsividad */
+    gap: 30px;
+}
+
+/* --- Secciones del Footer --- */
+.footer-section {
+    flex: 1;
+    min-width: 150px; /* Asegura un ancho mínimo antes de envolver */
+}
+
+.footer-section h4 {
+    /* Títulos con estilo neón */
+    color: var(--cyan);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    padding-bottom: 5px;
+    border-bottom: 1px dashed rgba(0, 245, 255, 0.3);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--white);
+    text-shadow: 0 0 5px var(--purple); /* Efecto hover con otro color neón */
+    transform: translateX(5px);
+    display: inline-block; /* Permite la translación */
+}
+
+/* --- Iconos Sociales --- */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: block;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.social-icons a:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 0 15px var(--pink); /* Efecto hover en los íconos */
+}
+
+.social-icons img {
+    width: 35px; /* Ajuste el tamaño de los iconos */
+    height: 35px;
+    object-fit: contain;
+}
+
+/* --- Sección de Copyright --- */
+.footer-bottom {
+    border-top: 1px solid var(--medium-blue);
+    background-color: var(--medium-blue);
+    text-align: center;
+    padding: 15px 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVIDAD --- */
+
+/* Tabletas (Max. 768px) */
+@media (max-width: 768px) {
+    .footer-content {
+        justify-content: space-around; /* Distribuye las secciones uniformemente */
+        gap: 20px;
+        padding: 0 15px 30px;
+    }
+    
+    .footer-section {
+        flex-basis: 40%; /* Dos secciones por fila */
+        min-width: 40%; 
+    }
+}
+
+/* Móviles (Max. 480px) */
+@media (max-width: 480px) {
+    .footer-content {
+        flex-direction: column; /* Una sección por fila */
+        align-items: center; /* Centra las secciones */
+        text-align: center;
+    }
+    
+    .footer-section {
+        flex-basis: 100%;
+        min-width: 100%;
+        padding-bottom: 20px;
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-section:last-child {
+        border-bottom: none;
+    }
+
+    .footer-section h4 {
+        margin-bottom: 15px;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
